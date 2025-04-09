@@ -1,4 +1,4 @@
-import 'package:black_hole/thirdScreen.dart';
+import 'package:black_hole/screens/thirdScreen.dart';
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {
