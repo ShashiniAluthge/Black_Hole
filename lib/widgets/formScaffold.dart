@@ -11,53 +11,55 @@ class FormScaffold extends StatelessWidget {
     required this.title,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
+
       children: [
         const Expanded(
-          flex: 1,
+          flex:1,
           child: SizedBox(height: 10.0),
         ),
         Expanded(
-          flex: 7,
-          child: Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                )),
-            child: SingleChildScrollView(
-              child: Form(
-                  key: _formSignInKey,
-                  child:  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20.0, horizontal: 15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          title,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 45.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const SizedBox(height: 50.0),
-                        SafeArea(child: Column(
-                          children: [
-                            ...formChildren,
-                          ],
-                        ))
-                      ],
-                    ),
+          flex:7,
+          child:Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
                   )),
+              child: SingleChildScrollView(
+                child: Form(
+                    key: _formSignInKey,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            title,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 35.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 50.0),
+                          SafeArea(
+                              child: Column(
+                            children: [
+                              ...formChildren,
+                            ],
+                          ))
+                        ],
+                      ),
+                    )),
+              ),
             ),
           ),
-        ),
+
       ],
     );
   }

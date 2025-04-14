@@ -1,3 +1,4 @@
+import 'package:black_hole/screens/forgotpasswordScreen.dart';
 import 'package:black_hole/screens/homeScreen.dart';
 import 'package:black_hole/screens/signupScreen.dart';
 import 'package:black_hole/widgets/customScaffold.dart';
@@ -24,8 +25,10 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      appbarTitle: 'Back',
+      backIcon: Icons.arrow_back_ios_new,
       child: FormScaffold(
-        title: 'Get Started',
+        title: 'Welcome Back',
         formChildren: [
           Form(
             key: _formSignInKey,
@@ -81,11 +84,20 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ],
               ),
-              const Text(
-                'Forgot Password',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w900,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (e) => const ForgotPasswordScreen()),
+                  );
+                },
+                child: const Text(
+                  'Forgot Password',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
               ),
             ],
