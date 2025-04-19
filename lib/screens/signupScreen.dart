@@ -1,5 +1,7 @@
 import 'package:black_hole/screens/signinScreen.dart';
 import 'package:black_hole/widgets/customScaffold.dart';
+import 'package:black_hole/widgets/validateEmail.dart';
+import 'package:black_hole/widgets/validatePassword.dart';
 import 'package:flutter/material.dart';
 import '../widgets/formScaffold.dart';
 import '../widgets/inputFields.dart';
@@ -17,7 +19,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formSignInKey = GlobalKey<FormState>();
-  bool rememberpassword = true;
+  bool rememberPassword = true;
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -43,29 +45,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
                 const SizedBox(height: 20.0),
-                InputFields(
+                const InputFields(
                   label: 'Email',
                   hintText: 'Enter Email',
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter Email';
-                    }
-                    return null;
-                  },
+                  validator: ValidateEmail.validate,
                 ),
                 const SizedBox(height: 20.0),
-                InputFields(
+                const InputFields(
                   label: 'Password',
                   hintText: 'Enter Password',
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    return null;
-                  },
+                  validator: ValidatePassword.validate,
                 ),
               ],
             ),
@@ -77,10 +69,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   Checkbox(
-                    value: rememberpassword,
+                    value: rememberPassword,
                     onChanged: (value) {
                       setState(() {
-                        rememberpassword = value!;
+                        rememberPassword = value!;
                       });
                     },
                     activeColor: Colors.amber,
@@ -100,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             isLoading: isLoading,
             buttonText: 'Sign up',
             onPressed: () async {
-              if (_formSignInKey.currentState!.validate() && rememberpassword) {
+              if (_formSignInKey.currentState!.validate() && rememberPassword) {
                 setState(() {
                   isLoading = true;
                 });
@@ -117,7 +109,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // );
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (e) => const SignInScreen()));
-              } else if (!rememberpassword) {
+              } else if (!rememberPassword) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Please agree to processing data'),

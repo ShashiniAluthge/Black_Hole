@@ -1,20 +1,19 @@
-import 'package:black_hole/widgets/customScaffold.dart';
-import 'package:black_hole/widgets/formScaffold.dart';
-import 'package:black_hole/widgets/inputFields.dart';
-import 'package:black_hole/widgets/signButtons.dart';
-import 'package:black_hole/widgets/validateEmail.dart';
+import 'package:black_hole/screens/resetPasswordScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'otpVerification.dart';
+import '../widgets/customScaffold.dart';
+import '../widgets/formScaffold.dart';
+import '../widgets/inputFields.dart';
+import '../widgets/signButtons.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+class OtpVerification extends StatefulWidget {
+  const OtpVerification({super.key});
 
   @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+  State<OtpVerification> createState() => _OtpVerificationState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _OtpVerificationState extends State<OtpVerification> {
   final _formSignInKey = GlobalKey<FormState>();
   bool isLoading = false;
 
@@ -24,18 +23,22 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appbarTitle: 'Back',
       backIcon: Icons.arrow_back_ios_new,
       child: FormScaffold(
-        title: 'Forgot Password',
+        title: 'OTP Verification',
         formChildren: [
           Form(
             key: _formSignInKey,
-            child: const Column(
+            child: Column(
               children: [
                 InputFields(
-                  label: 'Email',
-                  hintText: 'Enter Email',
-                  keyboardType: TextInputType.emailAddress,
-                  validator: ValidateEmail.validate,
-                ),
+                    label: 'OTP',
+                    hintText: 'Enter OTP',
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter OTP';
+                      }
+                      return null;
+                    }),
               ],
             ),
           ),
@@ -54,12 +57,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   await Future.delayed(
                     const Duration(seconds: 2),
                   );
-
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (e) => const OtpVerification()),
+                    MaterialPageRoute(builder: (e) => const ResetPasswordScreen()),
                   );
-
                   setState(() {
                     isLoading = false;
                   });
