@@ -8,6 +8,8 @@ import 'package:black_hole/widgets/signBottomText.dart';
 import 'package:black_hole/widgets/signButtons.dart';
 import 'package:black_hole/widgets/signDivider.dart';
 import 'package:black_hole/widgets/socialLogo.dart';
+import 'package:black_hole/widgets/validateEmail.dart';
+import 'package:black_hole/widgets/validatePassword.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -32,31 +34,21 @@ class _SignInScreenState extends State<SignInScreen> {
         formChildren: [
           Form(
             key: _formSignInKey,
-            child: Column(
+            child: const Column(
               children: [
                 InputFields(
                   label: 'Email',
                   hintText: 'Enter Email',
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter Email';
-                    }
-                    return null;
-                  },
+                  validator: ValidateEmail.validate,
                 ),
-                const SizedBox(height: 20.0),
+                SizedBox(height: 20.0),
                 InputFields(
                   label: 'Password',
                   hintText: 'Enter Password',
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    return null;
-                  },
+                  validator: ValidatePassword.validate,
                 ),
               ],
             ),
