@@ -7,8 +7,7 @@ class SecondScreen extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Padding(
@@ -76,12 +75,12 @@ class SecondScreen extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ThirdScreen()));
-                },
+                // onTap: () {
+                //   Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //           builder: (context) => const ThirdScreen()));
+                // },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50.0),
                   child: Center(
@@ -105,6 +104,6 @@ class SecondScreen extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }
