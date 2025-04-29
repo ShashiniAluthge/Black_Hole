@@ -1,3 +1,4 @@
+import 'package:black_hole/navigation/bottomNavigation.dart';
 import 'package:black_hole/screens/forgotpasswordScreen.dart';
 import 'package:black_hole/screens/homeScreen.dart';
 import 'package:black_hole/screens/signupScreen.dart';
@@ -114,8 +115,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 //     content: Text('Processing data'),
                 //   ),
                 // );
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (e) => const HomeScreen()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (e) => const BottomNavigation()));
               } else if (!rememberpassword) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
